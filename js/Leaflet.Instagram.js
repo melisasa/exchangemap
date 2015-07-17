@@ -9,7 +9,8 @@ L.Instagram = L.FeatureGroup.extend({
 		popup: {
 			className: 'leaflet-popup-instagram'
 		},		
-		imageTemplate: '<a href="{link}" title="View on Instagram"><img src="{image_standard}"/></a><p>{caption}<br>Posted on: {time}</a></p><br><table style="width:100%"><tr><td align="left"><i class="fa fa-arrow-left" id="toggle-previous"></i></td><td align="right"><i class="fa fa-arrow-right" id="toggle-next"></i></td></tr></table>', 
+		//imageTemplate: '<a href="{link}" title="View on Instagram"><img src="{image_standard}"/></a><p>{caption}<br>Posted on: {time}</a></p><br><table style="width:100%"><tr><td align="left"><i class="fa fa-arrow-left" id="toggle-previous"></i></td><td align="right"><i class="fa fa-arrow-right" id="toggle-next"></i></td></tr></table>', 
+		imageTemplate: '<a href="{link}" title="View on Instagram"><img src="{image_standard}"/></a><p>{caption}<br>Posted on: {time}</a></p><br><table style="width:100%"><tr><td align="left"><i class="fa fa-arrow-left"></i></td><td align="right"><i class="fa fa-arrow-right"></i></td></tr></table>', 
 		videoTemplate: '<a href="{link}" title="View on Instagram"><video autoplay controls poster="{image_standard}"><source src="{video_standard}" type="video/mp4"/></video></a><p>{caption}</a></p>', 	
 		
                 
@@ -87,8 +88,8 @@ L.Instagram = L.FeatureGroup.extend({
 			type: 			image.type,			
 			video_standard: (image.type === 'video') ? image.videos.standard_resolution.url : null,
 			link: 			image.link,
-			time: 			image.caption.created_time
-                        /*time:           function() { 
+
+                        time:           function() { 
                             
                             var unix_timestamp = parseInt(image.caption.created_time);                            
                             var date = new Date(unix_timestamp*1000);
@@ -106,7 +107,7 @@ L.Instagram = L.FeatureGroup.extend({
                             }
                             
                             return day + "-" + month + "-" + year;
-                        }*/
+                        }
                         
                         
 		};
