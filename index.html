@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Leaflet Instagram Popup</title>
+	<!--<meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    --> 
+	<!--<link rel="stylesheet" href="css/map.css" />-->
+        <link rel="stylesheet" type="text/css" href="css/own_style.css">
+        <link rel="stylesheet" type="text/css" href="css/leaflet.css">
+        <link rel="stylesheet" type="text/css" href="css/Leaflet.Instagram.css">
+        <link rel="stylesheet" href="css/font-awesome.css" />  
+        <link rel="stylesheet" href="css/font-awesome.min.css" /> 
+        
+	<div id="map"></div>
+	        
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+
+        <script src="js/reqwest.min.js"></script>
+        <script src="js/Leaflet.Instagram.Original.js"></script>        
+          
+        
+</head>
+<body>
+    <!--<script src="data/exp_points.js"></script>-->
+    <script>
+/*        
+        $(document).ready(function() {
+          
+            $.ajax({
+                type: "GET",
+                url: "data.json",
+                data: {}, 
+                dataType:"json",
+                success: function (data) {
+                    $.each(data, function(key, value) {
+                        
+                    });
+                },
+                error: function (data) {
+                    alert("error");
+                }               
+            });
+            
+            
+        });
+       
+*/                       
+	var map = L.map('map', {
+		maxZoom: 19
+	}).fitBounds([[1.1181208872,103.471325316],[1.54801277324,104.089665725]]);
+        var hash = new L.Hash(map);
+        
+        /*function pop_points(feature, layer) {					
+			var popupContent = '<table><tr><th scope="row">Project_na</th><td>' + Autolinker.link(String(feature.properties['Project_na'])) + '</td></tr><tr><th scope="row">n_units</th><td>' + Autolinker.link(String(feature.properties['n_units'])) + '</td></tr><tr><th scope="row">area</th><td>' + Autolinker.link(String(feature.properties['area'])) + '</td></tr><tr><th scope="row">type</th><td>' + Autolinker.link(String(feature.properties['type'])) + '</td></tr><tr><th scope="row">Transacted</th><td>' + Autolinker.link(String(feature.properties['Transacted'])) + '</td></tr><tr><th scope="row">unit_pri</th><td>' + Autolinker.link(String(feature.properties['unit_pri'])) + '</td></tr></table>';
+			layer.bindPopup(popupContent);
+		}
+    
+        L.geoJson(exp_points, {
+            onEachFeature: pop_points,
+            pointToLayer:function (feature, latlng) {  
+                return L.circleMarker(latlng, {
+                    radius: 4.0,
+                    fillColor: '#4315c2',
+                    color: '#4315c2',
+                    weight: 1,
+                    opacity: 1.0,
+                    fillOpacity: 1.0
+                })
+            }
+        }).addTo(map);
+        
+        
+/*        function twitter_json(data) {
+            return data; 
+        }
+        
+        console.log(twitter_json(data.json));
+    */   
+        L.instagram('https://api.instagram.com/v1/users/1815573/media/recent?access_token=1815573.c2769fa.d4dc74ddf4664e31826b7000f2f5becf').addTo(map); 
+	
+        var basemap_0 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { 
+			attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+		});	
+	basemap_0.addTo(map);
+	
+        var basemap_1 = L.tileLayer('http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png', { 
+			attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+		});
+	
+        var basemap_2 = L.tileLayer('http://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png', { 
+			attribution: '&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+		});	
+                		
+	var baseMaps = {
+                    'OSM Standard': basemap_0,
+                    'OSM Black & White': basemap_1,
+                    'Thunderforest Transport': basemap_2};
+	
+        L.control.layers(baseMaps,null,{collapsed:false}).addTo(map);
+	L.control.scale({options: {position: 'bottomleft',maxWidth: 100,metric: true,imperial: false,updateWhenIdle: false}}).addTo(map);
+
+  </script>    
+</body>
+</html>
