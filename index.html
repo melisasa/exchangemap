@@ -27,7 +27,8 @@ and open the template in the editor.
         <script src="js/Autolinker.min.js"></script>
 
         <script src="js/reqwest.min.js"></script>
-        <script src="js/Leaflet.Instagram.js"></script>        
+        <script src="js/Leaflet.Instagram.Original.js"></script>
+        <script src="js/instafetch.js"></script>        
           
         
 </head>
@@ -86,13 +87,17 @@ and open the template in the editor.
         }
         
         console.log(twitter_json(data.json));
-    */   
+    */  
+
+        
+
+
         L.instagram('https://api.instagram.com/v1/users/1815573/media/recent?access_token=1815573.c2769fa.d4dc74ddf4664e31826b7000f2f5becf').addTo(map); 
 	
         var basemap_0 = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { 
 			attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
 		});	
-	basemap_0.addTo(map);
+	    basemap_0.addTo(map);
 	
         var basemap_1 = L.tileLayer('http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png', { 
 			attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
@@ -102,14 +107,14 @@ and open the template in the editor.
 			attribution: '&copy; <a href="http://www.opencyclemap.org">OpenCycleMap</a>, &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
 		});	
                 		
-	var baseMaps = {
+	   var baseMaps = {
                     'OSM Standard': basemap_0,
                     'OSM Black & White': basemap_1,
                     'Thunderforest Transport': basemap_2};
 	
         L.control.layers(baseMaps,null,{collapsed:false}).addTo(map);
-	L.control.scale({options: {position: 'bottomleft',maxWidth: 100,metric: true,imperial: false,updateWhenIdle: false}}).addTo(map);
+	   L.control.scale({options: {position: 'bottomleft',maxWidth: 100,metric: true,imperial: false,updateWhenIdle: false}}).addTo(map);
 
-  </script>    
+    </script>    
 </body>
 </html>
